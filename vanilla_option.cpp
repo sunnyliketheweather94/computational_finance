@@ -2,7 +2,7 @@
 #define __VANILLA_OPTION_CPP__
 
 
-#include "vanilla_option.hpp"
+#include "vanilla_option.h"
 #include <cmath>
 
 
@@ -28,11 +28,11 @@ void VanillaOption::copy(const VanillaOption& rhs) {
     sigma = rhs.get_sigma();
 }
 
-void VanillaOption::VanillaOption() {
+VanillaOption::VanillaOption() {
     init();
 }
 
-void VanillaOption::VanillaOption(const double& K_, 
+VanillaOption::VanillaOption(const double& K_, 
                              const double& r_, 
                              const double& T_,
                              const double& S_, 
@@ -41,7 +41,7 @@ void VanillaOption::VanillaOption(const double& K_,
 // do nothing
 }
 
-void VanillaOption::VanillaOption(const VanillaOption& rhs) {
+VanillaOption::VanillaOption(const VanillaOption& rhs) {
     copy(rhs);
 }
 
@@ -55,7 +55,7 @@ VanillaOption& VanillaOption::operator=(const VanillaOption& rhs) {
     return *this;
 }
 
-void VanillaOption::~VanillaOption() {
+VanillaOption::~VanillaOption() {
     // do nothing since compiler cleans up the destruction process for us
     // because we haven't declared anything on the heap.
 }
@@ -66,18 +66,18 @@ double VanillaOption::get_T()     const { return T; }
 double VanillaOption::get_S()     const { return S; }
 double VanillaOption::get_sigma() const { return sigma; }
 
-double calc_call_price() const {
-    double sigma_sqrtT { sigma * std::sqrt(T) };
-    double d_1 { (std::log(S / K) + T * (r + sigma * sigma / 2.0)) / sigma_sqrtT };
-    double d_2 { d_1 - sigma_sqrtT };
+double VanillaOption::calc_call_price() const {
+    double sigma_sqrtT = sigma * std::sqrt(T);
+    double d_1 = (std::log(S / K) + T * (r + sigma * sigma / 2.0)) / sigma_sqrtT;
+    double d_2 = d_1 - sigma_sqrtT;
 
     return S * normalCDF(d_1) - K * std::exp(- r * T) * normalCDF(d_2);
 }
 
-double calc_put_price() const {
-    double sigma_sqrtT { sigma * std::sqrt(T) };
-    double d_1 { (std::log(S / K) + T * (r + sigma * sigma / 2.0)) / sigma_sqrtT };
-    double d_2 { d_1 - sigma_sqrtT };
+double VanillaOption::calc_put_price() const {
+    double sigma_sqrtT = sigma * std::sqrt(T);
+    double d_1 = (std::log(S / K) + T * (r + sigma * sigma / 2.0)) / sigma_sqrtT;
+    double d_2 = d_1 - sigma_sqrtT;
 
     return K * std::exp(- r * T) * normalCDF(- d_2) - S * normalCDF(- d_1);
 }
