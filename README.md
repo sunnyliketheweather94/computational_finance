@@ -1,6 +1,6 @@
 ### Quantitative Finance bootcamp
 
-Hello! I hope you're doing well. This is my bootcamp, where I try to revise my mathematical finance concepts such as derivatives-pricing, finite difference methods, solving the Black-Scholes PDE, etc. I do this in conjunction with brushing over my C++ skills, something that is in demand in the field of computational finance. I follow the book *C++ for Quantitative Finance* by Halls-Moore. 
+Hello! I hope you're doing well. This is my bootcamp, where I try to revise my mathematical finance concepts such as derivatives-pricing, finite difference methods, solving the Black-Scholes PDE, etc. I do this in conjunction with brushing over my C++ skills, something that is in demand in the field of computational finance. I follow the book [*C++ for Quantitative Finance*](https://www.quantstart.com/cpp-for-quantitative-finance-ebook/) by Halls-Moore. 
 
 ### About me:
 I'm a MS student at Stanford University, studying Computational and Mathematical Engineering within the [Institute for Computational and Mathematical Engineering](https://icme.stanford.edu/). My concentration is __Mathematical and Computational Finance__. I've already taken several classes on C++ (CME 211 + 212), Quantitative Finance (MATH 238, STATS 240, MS&E 448) and some statistics (CME 308, STATS 240).
