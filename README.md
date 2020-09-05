@@ -11,3 +11,12 @@ MATH 238 - *Mathematical Finance*
 STATS 240 - *Statistical Methods in Finance*    
 MS&E 448 - *Big Financial Data and Algorithmic Trading*    
 CME 308 - *Stochastic Methods in Engineering*    
+
+# Topics Covered So Far:
+1. Vanilla/European Option Pricer
+  * Covered the derivation of the Black-Scholes pricing for call and put options
+  * Covered the C++ concepts of creating classes and then header and source files
+2. Pay-Off Functions
+  * Covered the different pay-off functions for different options
+  * Covered inheritance and polymorphism
+  * Covered the use of the keyword *virtual* in C++ function prototypes and destructors
