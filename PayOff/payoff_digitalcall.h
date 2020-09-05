@@ -3,9 +3,7 @@
 
 #include "payoff.h"
 
-double heaviside(const double x) {
-    return (x >= 0.0) ? 1.0 : 0.0;
-}
+double heaviside(const double x) const;
 
 
 class PayOffDigitalCall : public PayOff {
@@ -13,7 +11,7 @@ private:
     double K; // strike price
 
 public:
-    PayOffDigitalCall(const double K_) const {};
+    PayOffDigitalCall(const double K_) const;
     virtual ~PayOffDigitalCall();
 
     // use the heaviside function. 
