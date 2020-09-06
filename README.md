@@ -20,3 +20,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Covered the different pay-off functions for different options
      * Covered inheritance and polymorphism
      * Covered the use of the keyword *virtual* in C++ function prototypes and destructors
+3. Constructing a Simple Matrix class
+     * Covered generic, templated programming
+     * Covered overloading of the addition, << and subtraction operators
+     * Covered the std::vector and std::pair data structures
