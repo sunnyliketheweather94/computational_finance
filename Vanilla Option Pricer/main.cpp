@@ -11,7 +11,7 @@ int main() {
     std::cout << "The price of the call option is $" << std::setprecision(3) << example.calc_call_price() << "." << std::endl;
 
     // should output $1.16
-    std::cout << "The price of the put option is $" << std::setprecision(3) << example.calc_put_price() << << "." << std::endl;
+    std::cout << "The price of the put option is $" << std::setprecision(3) << example.calc_put_price() << "." << std::endl;
 
     return 0;
 }
