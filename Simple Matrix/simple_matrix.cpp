@@ -3,7 +3,6 @@
 
 #include "simple_matrix.h"
 #include <fstream>
-#include <iostream>
 #include <iomanip>
 #include <vector>
 #include <utility>
@@ -49,34 +48,32 @@ SimpleMatrix<Type>& SimpleMatrix<Type>::operator=(const SimpleMatrix<Type>& rhs)
 
 // overloading the addition operator
 template <typename Type>
-SimpleMatrix<Type> SimpleMatrix<Type>::operator+(const SimpleMatrix<Type>& other) {
-    std::vector<std::vector<Type> > result;
+SimpleMatrix<Type> SimpleMatrix<Type>::operator+(SimpleMatrix<Type>& other) {
     std::pair<int, int> p = get_dim(); // obtain dimensions of matrix
+    SimpleMatrix<Type> result(p.first, p.second, Type());
 
     for(int i = 0; i < p.first; ++i) {
-        std::vector<Type> temp;
         for(int j = 0; j < p.second; ++j) {
-            temp.push_back(value(i, j) + other.value(i, j));
+            result.value(i, j) = value(i, j) + other.value(i, j);
         }
-
-        result.push_back(temp);
     }
+
+    return result;
 }
 
 // overloading the subtraction operator
 template <typename Type>
-SimpleMatrix<Type> SimpleMatrix<Type>::operator-(const SimpleMatrix<Type>& other) {
-    std::vector<std::vector<Type> > result;
+SimpleMatrix<Type> SimpleMatrix<Type>::operator-(SimpleMatrix<Type>& other) {
     std::pair<int, int> p = get_dim(); // obtain dimensions of matrix
+    SimpleMatrix<Type> result(p.first, p.second, Type());
 
     for(int i = 0; i < p.first; ++i) {
-        std::vector<Type> temp;
         for(int j = 0; j < p.second; ++j) {
-            temp.push_back(value(i, j) - other.value(i, j));
+            result.value(i, j) = value(i, j) - other.value(i, j);
         }
-
-        result.push_back(temp);
     }
+
+    return result;
 }
 
 // destructor
@@ -114,7 +111,7 @@ std::pair<int, int> SimpleMatrix<Type>::get_dim() const {
 
 // overloading the std::cout
 template <typename Type>
-std::ostream& operator<<(std::ostream& os, SimpleMatrix<Type>& other) {
+std::ostream& operator<<(std::ostream& os, const SimpleMatrix<Type>& other) {
     std::pair<int, int> p = other.get_dim(); // obtain dimensions
 
     for(int i = 0; i < p.first; ++i) {

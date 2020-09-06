@@ -16,8 +16,8 @@ public:
     SimpleMatrix(const int& rows, const int& cols, const T& val); // fills entire matrix with val
     SimpleMatrix(const SimpleMatrix<T>& rhs_); // copy constructor
     SimpleMatrix<T>& operator=(const SimpleMatrix<T>& rhs_); // assignment operator
-    SimpleMatrix<T>  operator+(const SimpleMatrix<T>& other); // overloading the addition operator
-    SimpleMatrix<T>  operator-(const SimpleMatrix<T>& other); // overloading the addition operator
+    SimpleMatrix<T>  operator+(SimpleMatrix<T>& other); // overloading the addition operator
+    SimpleMatrix<T>  operator-(SimpleMatrix<T>& other); // overloading the addition operator
     virtual ~SimpleMatrix(); // virtual destructor
 
     // member functions
@@ -28,5 +28,6 @@ public:
 };
 
 
+#include "simple_matrix.cpp"
 
 #endif
