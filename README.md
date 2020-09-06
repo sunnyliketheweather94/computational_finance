@@ -22,5 +22,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Covered the use of the keyword *virtual* in C++ function prototypes and destructors
 3. Constructing a Simple Matrix class
      * Covered generic, templated programming
-     * Covered overloading of the addition, << and subtraction operators
-     * Covered the std::vector and std::pair data structures
+     * Covered the std::vector and std::pair data structures   
+4. Constructing a Matrix class   
+     * Implemented the matrix-matrix, matrix-scalar, matrix-vector operations
+     * linking templated classes
