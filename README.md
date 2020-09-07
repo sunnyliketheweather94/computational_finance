@@ -32,5 +32,5 @@ CME 308 - *Stochastic Methods in Engineering*
         - matrix-matrix, matrix-scalar, matrix-vector operations
         - reduction operations (sum of all elements, product of all elements, minimum/maximum element, trace of a square matrix
 6. Numerical Linear Algebra
-     * Used the _Eigen_ library to compute the LU decomposition of a $4 \times 4$ matrix and output the $L$ and $U$ triangular matrices
+     * Used the _Eigen_ library to compute the LU decomposition of a <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;4&space;\times&space;4" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;4&space;\times&space;4" title="4 \times 4" /></a> matrix and output the $L$ and $U$ triangular matrices
      * Implemented the [Thomas algorithm](https://www.cfd-online.com/Wiki/Tridiagonal_matrix_algorithm_-_TDMA_(Thomas_algorithm))
