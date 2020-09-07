@@ -26,3 +26,5 @@ CME 308 - *Stochastic Methods in Engineering*
 4. Constructing a Matrix class   
      * Implemented the matrix-matrix, matrix-scalar, matrix-vector operations
      * linking templated classes
+5. Introduction to the [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) library
+     * Created a few _main_ files to learn how to use Eigen (previously used MTL4 and Boost for numerical linear algebra, not Eigen)
