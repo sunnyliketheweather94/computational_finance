@@ -34,3 +34,6 @@ CME 308 - *Stochastic Methods in Engineering*
 6. Numerical Linear Algebra
      * Used the _Eigen_ library to compute the LU decomposition of a <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;4&space;\times&space;4" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;4&space;\times&space;4" title="4 \times 4" /></a> matrix and output the <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;L" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;L" title="L" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;U" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;U" title="U" /></a> triangular matrices
      * Implemented the [Thomas algorithm](https://www.cfd-online.com/Wiki/Tridiagonal_matrix_algorithm_-_TDMA_(Thomas_algorithm)) to solve a discretized 1D heat equation (for one time step)
+     * Used the _Eigen_ library to compute the Cholesky decomposition of a matrix; also brushed up on Cholesky decomposition
+     * Used the _Eigen_ library to compute the QR decomposition of a matrix; also reviewed QR decomposition
+7. Using Monte Carlo methods to price European Options
