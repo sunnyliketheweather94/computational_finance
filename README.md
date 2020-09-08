@@ -41,3 +41,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Implemented the Monte Carlo method to compute the price of an European option (call and put)
      * Covered the [Box-Muller algorithm](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform) to generate a random Normal number
      * Reviewed the risk-neutral pricing of a call option
+8. Using 3 different methods to compute the Greeks
+     * Implemented the analytical formulas for the Greeks (European, both call and put):
+     |      | Calls | Puts |
+     | Delta <a href="https://www.codecogs.com/eqnedit.php?latex=\left(&space;\frac{\partial&space;C}{\partial&space;S}&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\left(&space;\frac{\partial&space;C}{\partial&space;S}&space;\right&space;)" title="\left( \frac{\partial C}{\partial S} \right )" /></a> | <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbf{\Phi}\left(&space;d_1&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbf{\Phi}\left(&space;d_1&space;\right&space;)" title="\mathbf{\Phi}\left( d_1 \right )" /></a> | <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbf{\Phi}\left(&space;d_1&space;\right&space;)&space;-&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbf{\Phi}\left(&space;d_1&space;\right&space;)&space;-&space;1" title="\mathbf{\Phi}\left( d_1 \right ) - 1" /></a> |
