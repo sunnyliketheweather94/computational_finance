@@ -37,3 +37,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Used the _Eigen_ library to compute the Cholesky decomposition of a matrix; also brushed up on Cholesky decomposition
      * Used the _Eigen_ library to compute the QR decomposition of a matrix; also reviewed QR decomposition
 7. Using Monte Carlo methods to price European Options
+     * Implemented the analytical method to compute the price of an European option (call and put)
+     * Implemented the Monte Carlo method to compute the price of an European option (call and put)
+     * Covered the Box-Muller algorithm to generate a random Normal number
+     * Reviewed the risk-neutral pricing of a call option
