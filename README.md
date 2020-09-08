@@ -39,5 +39,5 @@ CME 308 - *Stochastic Methods in Engineering*
 7. Using Monte Carlo methods to price European Options
      * Implemented the analytical method to compute the price of an European option (call and put)
      * Implemented the Monte Carlo method to compute the price of an European option (call and put)
-     * Covered the Box-Muller algorithm to generate a random Normal number
+     * Covered the [Box-Muller algorithm](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform) to generate a random Normal number
      * Reviewed the risk-neutral pricing of a call option
