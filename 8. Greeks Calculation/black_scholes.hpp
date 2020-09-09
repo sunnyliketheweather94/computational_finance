@@ -125,5 +125,189 @@ double normal_generator(const double& mu = 0.0, const double& sigma = 1.0) {
     return mu + random_number * sigma;
 }
 
+void monte_carlo(const int& iter, const bool& call, const int& choice, const double& S, 
+                   const double& K, const double& r,  const double& sigma, 
+                   const double& T, const double& delta,
+                         double& price_Sm,double& price_S, double& price_Sp) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double S_curr {0.0}, S_curr_m {0.0}, S_curr_p {0.0};
+    double total_payoff_m {0.0}, total_payoff {0.0}, total_payoff_p {0.0};
+
+    for(int i = 0; i < iter; ++i) {
+        double gauss = normal_generator();
+
+        double exp_gauss   {0.0};
+        double exp_gauss_m {0.0};
+        double exp_gauss_p {0.0};
+
+        switch(choice) {
+            case 1: // for delta
+            case 2: // for gamma
+                exp_gauss = std::exp((r - 0.5 * sigma * sigma) * T + sigma * std::sqrt(T) * gauss);
+
+                S_curr_m = (S - delta) * exp_gauss;
+                S_curr   =     S       * exp_gauss;
+                S_curr_p = (S + delta) * exp_gauss;
+
+                break;
+
+            case 3: // for vega
+                exp_gauss_m = std::exp(T * (r - 0.5 * (sigma - delta) * (sigma - delta)) + (sigma - delta) * std::sqrt(T) * gauss);
+                exp_gauss   = std::exp(T * (r - 0.5 * (sigma        ) * (sigma        )) + (sigma        ) * std::sqrt(T) * gauss);
+                exp_gauss_p = std::exp(T * (r - 0.5 * (sigma + delta) * (sigma + delta)) + (sigma + delta) * std::sqrt(T) * gauss);
+
+                S_curr_m = S * exp_gauss_m;
+                S_curr   = S * exp_gauss  ;
+                S_curr_p = S * exp_gauss_p;
+
+                break;
+
+            case 4: // for theta
+                exp_gauss_m = std::exp((T - delta) * (r - 0.5 * sigma * sigma) + sigma * std::sqrt(T - delta) * gauss);
+                exp_gauss   = std::exp((T        ) * (r - 0.5 * sigma * sigma) + sigma * std::sqrt(T        ) * gauss);
+                exp_gauss_p = std::exp((T + delta) * (r - 0.5 * sigma * sigma) + sigma * std::sqrt(T + delta) * gauss);
+
+                S_curr_m = S * exp_gauss_m;
+                S_curr   = S * exp_gauss  ;
+                S_curr_p = S * exp_gauss_p;
+
+                break;    
+
+            case 5: // for rho
+                exp_gauss_m = std::exp(T * ((r - delta) - 0.5 * sigma * sigma) + sigma * std::sqrt(T) * gauss);
+                exp_gauss   = std::exp(T * ((r        ) - 0.5 * sigma * sigma) + sigma * std::sqrt(T) * gauss);
+                exp_gauss_p = std::exp(T * ((r + delta) - 0.5 * sigma * sigma) + sigma * std::sqrt(T) * gauss);
+
+                S_curr_m = S * exp_gauss_m;
+                S_curr   = S * exp_gauss  ;
+                S_curr_p = S * exp_gauss_p;
+
+                break; 
+
+            default:
+                S_curr   = 0.0;
+                S_curr_m = 0.0;   
+                S_curr_p = 0.0;
+
+                break;
+        }
+
+        total_payoff_m += (call ? std::max(S_curr_m - K, 0.0) : std::max(K - S_curr_m, 0.0));        
+        total_payoff   += (call ?   std::max(S_curr - K, 0.0) : std::max(K - S_curr,   0.0));
+        total_payoff_p += (call ? std::max(S_curr_p - K, 0.0) : std::max(K - S_curr_p, 0.0));
+    }
+
+    price_Sm = std::exp(- r * T) * total_payoff_m / (double) iter;
+    price_S  = std::exp(- r * T) * total_payoff   / (double) iter;
+    price_Sp = std::exp(- r * T) * total_payoff_p / (double) iter;
+}
+
+double delta_mc(const int& iter, const bool& call, double& S, 
+                const double& K, const double& r, const double& sigma, 
+                const double& T, const double& delta) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double price_Sp {0.0}, price_S {0.0}, price_Sm {0.0};
+    monte_carlo(iter, call, 1, S, K, r, sigma, T, delta, price_Sm, price_S, price_Sp);
+
+    return (price_Sp - price_S) / delta;
+}
+
+double gamma_mc(const int& iter, const bool& call, double& S, 
+                const double& K, const double& r, const double& sigma, 
+                const double& T, const double& delta) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double price_Sp {0.0}, price_S {0.0}, price_Sm {0.0};
+    monte_carlo(iter, call, 2, S, K, r, sigma, T, delta, price_Sm, price_S, price_Sp);
+
+    return (price_Sp - 2 * price_S + price_Sm) / (delta * delta);
+}
+
+double  vega_mc(const int& iter, const bool& call, double& S, 
+                const double& K, const double& r, const double& sigma, 
+                const double& T, const double& delta) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double price_Sp {0.0}, price_S {0.0}, price_Sm {0.0};
+    monte_carlo(iter, call, 3, S, K, r, sigma, T, delta, price_Sm, price_S, price_Sp);
+
+    return (price_Sp - price_S) / delta;
+}
+
+double theta_mc(const int& iter, const bool& call, double& S, 
+                const double& K, const double& r, const double& sigma, 
+                const double& T, const double& delta) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double price_Sp {0.0}, price_S {0.0}, price_Sm {0.0};
+    monte_carlo(iter, call, 4, S, K, r, sigma, T, delta, price_Sm, price_S, price_Sp);
+
+    return (price_Sp - price_S) / delta;
+}
+
+double   rho_mc(const int& iter, const bool& call, double& S, 
+                const double& K, const double& r, const double& sigma, 
+                const double& T, const double& delta) {
+    // if call = True ---> compute call option price
+    // otherwise           compute put  option price
+    double price_Sp {0.0}, price_S {0.0}, price_Sm {0.0};
+    monte_carlo(iter, call, 5, S, K, r, sigma, T, delta, price_Sm, price_S, price_Sp);
+
+    return (price_Sp - price_S) / delta;
+}
+
+
+// ================================ //
+//    FINITE DIFFERENCE METHODS     //
+// ================================ //
+
+double delta_fdm(const bool& call, const double& S, const double& K, 
+                 const double& r,  const double& v, const double& T,
+                 const double& delta_S) {
+    // if call == true --> compute price of call option
+    // otherwise           compute price of put  option
+    return (calculate_price(call, S + delta_S, K, r, v, T) - calculate_price(call, S, K, r, v, T)) 
+           / delta_S;
+}
+
+double  gamma_fdm(const bool& call, const double& S, const double& K, 
+                  const double& r,  const double& v, const double& T,
+                  const double& delta_S) {
+    // if call == true --> compute price of call option
+    // otherwise           compute price of put  option
+    return (calculate_price(call, S + delta_S, K, r, v, T) - 2.0 * calculate_price(call, S, K, r, v, T) 
+            + calculate_price(call, S - delta_S, K, r, v, T)) / (delta_S * delta_S);
+}
+
+
+double vega_fdm(const bool& call, const double& S, const double& K, 
+                const double& r,  const double& v, const double& T,
+                const double& delta_v) {
+    // if call == true --> compute price of call option
+    // otherwise           compute price of put  option
+    return (calculate_price(call, S, K, r, v + delta_v, T) - calculate_price(call, S, K, r, v, T)) 
+           / delta_v;
+}
+
+double theta_fdm(const bool& call, const double& S, const double& K, 
+                 const double& r,  const double& v, const double& T,
+                 const double& delta_T) {
+    // if call == true --> compute price of call option
+    // otherwise           compute price of put  option
+    return (calculate_price(call, S, K, r, v, T + delta_T) - calculate_price(call, S, K, r, v, T)) 
+           / delta_T;
+}
+
+double   rho_fdm(const bool& call, const double& S, const double& K, 
+                 const double& r,  const double& v, const double& T,
+                 const double& delta_r) {
+    // if call == true --> compute price of call option
+    // otherwise           compute price of put  option
+    return (calculate_price(call, S, K, r + delta_r, v, T) - calculate_price(call, S, K, r, v, T)) 
+           / delta_r;
+}
+
 
 #endif
