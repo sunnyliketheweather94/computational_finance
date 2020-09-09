@@ -43,3 +43,5 @@ CME 308 - *Stochastic Methods in Engineering*
      * Reviewed the risk-neutral pricing of a call option
 8. Using 3 different methods to compute the Greeks
      * Implemented the [analytical formulas for the Greeks](https://en.wikipedia.org/wiki/Greeks_(finance)) (European, both call and put)
+     * Implemented the analytical formulas for the prices of the call/put options and the finite difference method to compute the Greeks
+     * Implemented the Monte Carlo methods to compute prices of the call/put options and the finite differences method to compute the Greeks
