@@ -45,3 +45,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Implemented the [analytical formulas for the Greeks](https://en.wikipedia.org/wiki/Greeks_(finance)) (European, both call and put)
      * Implemented the analytical formulas for the prices of the call/put options and the finite difference method to compute the Greeks
      * Implemented the Monte Carlo methods to compute prices of the call/put options and the finite differences method to compute the Greeks
+9. Computing the price of an Asian option
+     * Implemented polymorphism
+     * Used Monte Carlo to compute the price of an arithmetic Asian call option
+     * Covered Asian options
