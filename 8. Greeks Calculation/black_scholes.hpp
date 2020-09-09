@@ -1,7 +1,7 @@
 #ifndef __BLACK_SCHOLES_HPP__
 #define __BLACK_SCHOLES_HPP__
 
-#define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES // can use mathematical constants
 
 #include <iostream>
 #include <cmath>
