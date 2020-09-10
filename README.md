@@ -53,3 +53,6 @@ CME 308 - *Stochastic Methods in Engineering*
      * Reviewed the [Newton-Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) and [bisection](https://en.wikipedia.org/wiki/Bisection_method) methods
      * Coded up the programs to compute the volatility that would result in the option being priced at the given market price (implied volatility)
      * Covered function pointers in C++
+11. Random Number Generators and Statistical Distributions
+     * Covered how to generate a random uniform number, using a linear congruential generator
+     * Covered how to generate a standard normal distribution (using polymorphism and inheritance)
