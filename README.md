@@ -49,3 +49,7 @@ CME 308 - *Stochastic Methods in Engineering*
      * Implemented polymorphism
      * Used Monte Carlo to compute the price of an arithmetic Asian call option
      * Covered Asian options
+10. Calculating the implied volatility of an European option
+     * Reviewed the [Newton-Raphson](https://en.wikipedia.org/wiki/Newton%27s_method) and [bisection](https://en.wikipedia.org/wiki/Bisection_method) methods
+     * Coded up the programs to compute the volatility that would result in the option being priced at the given market price (implied volatility)
+     * Covered function pointers in C++
