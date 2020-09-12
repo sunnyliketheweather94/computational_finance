@@ -24,29 +24,29 @@ double StandardNormal::cdf(const double& x) const {
 
 double StandardNormal::inv_cdf(const double& quantile) const {
     // uses the Beasley-Springer-Moro algorithm
-    static double a[] {  2.50662823884,
-                       -18.61500062529,
-                        41.39119773534,
-                       -25.44106049637};
+    static double a[4] = {  2.50662823884, 
+                          -18.61500062529, 
+                           41.39119773534, 
+                          -25.44106049637};
 
-    static double b[] { -8.47351093090,
-                        23.08336743743,
-                       -21.06224101826,
-                         3.13082909833};
+    static double b[4] = { -8.47351093090,
+                           23.08336743743,
+                          -21.06224101826,
+                            3.13082909833};
 
-    static double c[] {0.3374754822726147,
-                       0.9761690190917186,
-                       0.1607979714918209,
-                       0.0276438810333863,
-                       0.0038405729373609,
-                       0.0003951896511919,
-                       0.0000321767881768,
-                       0.0000002888167364,
-                       0.0000003960315187};
+    static double c[9] = {0.3374754822726147,
+                          0.9761690190917186,
+                          0.1607979714918209,
+                          0.0276438810333863,
+                          0.0038405729373609,
+                          0.0003951896511919,
+                          0.0000321767881768,
+                          0.0000002888167364,
+                          0.0000003960315187};
 
     if(quantile >= 0.5 and quantile <= 0.92) {
-        double num   {0.0};
-        double denom {1.0};
+        double num   = {0.0};
+        double denom = {1.0};
 
         for(int i = 0; i < 4; ++i) {
             num   += a[i] * std::pow((quantile - 0.5), 2 * i + 1);
@@ -57,7 +57,7 @@ double StandardNormal::inv_cdf(const double& quantile) const {
     }
 
     else if (quantile > 0.92 and quantile < 1) {
-        double num {0.0};
+        double num = {0.0};
 
         for(int i = 0; i < 0; ++i) {
             num += c[i] * std::pow((std::log(- std::log(1 - quantile))), i);

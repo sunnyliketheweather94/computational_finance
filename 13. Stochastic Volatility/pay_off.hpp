@@ -8,7 +8,7 @@ public:
     Payoff(); // default constructor
     virtual ~Payoff(); // destructor
 
-    virtual double operator()(const double& S) = 0; // pure virtual function
+    virtual double operator()(const double& S) const = 0; // pure virtual function
 };
 
 
