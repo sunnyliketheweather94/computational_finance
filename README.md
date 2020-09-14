@@ -1,4 +1,4 @@
-# Quantitative Finance bootcamp
+# Computational Finance bootcamp
 
 Hello! I hope you're doing well. This is my bootcamp, where I try to revise my mathematical finance concepts such as derivatives-pricing, finite difference methods, solving the Black-Scholes PDE, etc. I do this in conjunction with brushing over my C++ skills, something that is in demand in the field of computational finance. I follow the book [*C++ for Quantitative Finance*](https://www.quantstart.com/cpp-for-quantitative-finance-ebook/) by Halls-Moore. 
 
@@ -56,3 +56,6 @@ CME 308 - *Stochastic Methods in Engineering*
 11. Random Number Generators and Statistical Distributions
      * Covered how to generate a random uniform number, using a linear congruential generator
      * Covered how to generate a standard normal distribution (using polymorphism and inheritance)
+12.
+13.
+14.
